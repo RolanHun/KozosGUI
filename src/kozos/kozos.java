@@ -6,6 +6,7 @@
 package kozos;
 
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,6 +30,7 @@ public class kozos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         newKerdesBtn = new javax.swing.JButton();
         endBtn = new javax.swing.JButton();
         valaszBtn = new javax.swing.JButton();
@@ -38,16 +40,45 @@ public class kozos extends javax.swing.JFrame {
         kerdes = new javax.swing.JTextField();
         TextGiveUp = new javax.swing.JLabel();
         TextKérdés = new javax.swing.JLabel();
+        ossze = new javax.swing.JRadioButton();
+        kivon = new javax.swing.JRadioButton();
+        szor = new javax.swing.JRadioButton();
+        oszt = new javax.swing.JRadioButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         newKerdesBtn.setText("Új kérdés");
+        newKerdesBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newKerdesBtnActionPerformed(evt);
+            }
+        });
 
         endBtn.setText("Vége");
+        endBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                endBtnActionPerformed(evt);
+            }
+        });
 
         valaszBtn.setText("Válasz");
+        valaszBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valaszBtnActionPerformed(evt);
+            }
+        });
 
         feladBtn.setText("Feladás");
+        feladBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                feladBtnActionPerformed(evt);
+            }
+        });
 
         felad.setEnabled(false);
 
@@ -58,50 +89,83 @@ public class kozos extends javax.swing.JFrame {
 
         TextKérdés.setText("Kérdés:");
 
+        buttonGroup1.add(ossze);
+        ossze.setSelected(true);
+        ossze.setText("Összeadás");
+
+        buttonGroup1.add(kivon);
+        kivon.setText("Kivonás");
+
+        buttonGroup1.add(szor);
+        szor.setText("Szorzás");
+
+        buttonGroup1.add(oszt);
+        oszt.setText("Osztás");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(newKerdesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(endBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TextKérdés)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(kerdes, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(TextGiveUp)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(feladBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(valaszBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(valasz)
-                                .addComponent(felad)))))
-                .addGap(140, 140, 140))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(TextKérdés)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ossze, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(newKerdesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(endBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(TextGiveUp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(valaszBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(valasz)
+                                    .addComponent(felad, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(feladBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(47, 47, 47))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(kerdes, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(kivon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(szor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(oszt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(TextKérdés)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TextKérdés)
+                    .addComponent(ossze))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(kerdes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(kerdes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kivon))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(valasz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(valasz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(szor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(valaszBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(valaszBtn)
+                    .addComponent(oszt))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(felad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextGiveUp))
                 .addGap(9, 9, 9)
                 .addComponent(feladBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newKerdesBtn)
                     .addComponent(endBtn))
@@ -110,6 +174,69 @@ public class kozos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    Random rand = new Random();
+    int elso = rand.nextInt(100);
+    int masodik = rand.nextInt(100);
+    int megoldas = 0;
+    int helyesval = 0;
+    int rosszval = 0;
+    int feladval = 0;
+    int kerdesszam= 0;
+    private void newKerdesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newKerdesBtnActionPerformed
+        elso = rand.nextInt(100);
+        masodik = rand.nextInt(100);
+        kerdesszam += 1;
+        if (ossze.isSelected()){
+            kerdes.setText(elso + " + " + masodik + "    (Összeadás)");
+            megoldas = elso + masodik;
+        }
+        if (kivon.isSelected()){
+            kerdes.setText(elso + " - " + masodik + "    (Kivonás)");
+            megoldas = elso - masodik;
+        }
+        if (szor.isSelected()){
+            kerdes.setText(elso + " * " + masodik + "    (Szorzás)");
+            megoldas = elso * masodik;
+        }
+        if (oszt.isSelected()){
+            kerdes.setText(elso + " : " + masodik + "    (Osztás)");
+            megoldas = elso % masodik;
+        }
+        
+    }//GEN-LAST:event_newKerdesBtnActionPerformed
+
+    private void valaszBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valaszBtnActionPerformed
+        int tipp=Integer.parseInt(valasz.getText()); 
+        if (megoldas==tipp){
+           String meg=String.valueOf(megoldas);  
+           felad.setText("Helyes! " + meg);
+           helyesval += 1;
+        }
+        else {
+            String meg=String.valueOf(megoldas);  
+            felad.setText("Helytelen! " + meg);
+            rosszval += 1;
+        }
+    }//GEN-LAST:event_valaszBtnActionPerformed
+
+    private void feladBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feladBtnActionPerformed
+        String meg=String.valueOf(megoldas);  
+        felad.setText("Feladtad! " + meg);
+        feladval += 1;
+    }//GEN-LAST:event_feladBtnActionPerformed
+
+    private void endBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endBtnActionPerformed
+        JOptionPane.showMessageDialog(null, "Befejezted a játékot! " + " \n" + "Kérdések(db): " + kerdesszam + "\n" + "Helyes válaszok: " + helyesval + "\n" + "Helytelen válaszok: " + rosszval + "\n" + "Feladások: " + feladval);
+    }//GEN-LAST:event_endBtnActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        String ObjButtons[] = {"Igen","Nem"};
+        int PromptResult = JOptionPane.showOptionDialog(null,"Biztosan be akarod zárni?","Játék",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
+        if(PromptResult==JOptionPane.YES_OPTION)
+        {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_formWindowClosing
     
     /**
      * @param args the command line arguments
@@ -150,11 +277,16 @@ public class kozos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TextGiveUp;
     private javax.swing.JLabel TextKérdés;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton endBtn;
     private javax.swing.JTextField felad;
     private javax.swing.JButton feladBtn;
     private javax.swing.JTextField kerdes;
+    private javax.swing.JRadioButton kivon;
     private javax.swing.JButton newKerdesBtn;
+    private javax.swing.JRadioButton ossze;
+    private javax.swing.JRadioButton oszt;
+    private javax.swing.JRadioButton szor;
     private javax.swing.JTextField valasz;
     private javax.swing.JButton valaszBtn;
     // End of variables declaration//GEN-END:variables
