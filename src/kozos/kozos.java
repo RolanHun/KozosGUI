@@ -231,7 +231,7 @@ public class kozos extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         String ObjButtons[] = {"Igen","Nem"};
-        int PromptResult = JOptionPane.showOptionDialog(null,"Biztosan be akarod zárni?","Játék",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
+        int PromptResult = JOptionPane.showOptionDialog(null,"Biztosan be akarod zárni?","Játék | Bartók Roland - Balajcza Milán",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
         if(PromptResult==JOptionPane.YES_OPTION)
         {
             System.exit(0);
